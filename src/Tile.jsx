@@ -1,28 +1,41 @@
-import { Box } from "@chakra-ui/react";
+import { Box, GridItem } from "@chakra-ui/react";
 
 export function Tile({ content: Content, flip, state }) {
   switch (state) {
     case "start":
       return (
-        <Box
+        <GridItem
           onClick={flip}
           display="inline-block"
-          width={8}
-          height={8}
+          width="100%"
+          height="100%"
           textAlign="center"
-          bg="gray.500"
+          p="8px"
+          borderRadius="10px"
+          bg= "#68d391"
         >
-          ?
-        </Box>
+          <Content 
+            style={{
+              display: "hidden",
+              width: "100%",
+              height: "100%",
+              verticalAlign: "top",
+              color:"#68d391"
+                
+            }}
+            />
+        </GridItem>
       );
     case "flipped":
       return (
-        <Box
+        <GridItem
           display="inline-block"
-          width={8}
-          height={8}
+          width="100%"
+          height="100%"
           textAlign="center"
-          bg="yellow.500"
+          bg="#37a169"
+          borderRadius= "10px"
+          p= "8px"
         >
           <Content
             style={{
@@ -30,18 +43,21 @@ export function Tile({ content: Content, flip, state }) {
               width: "100%",
               height: "100%",
               verticalAlign: "top",
+              color: "#fff"
             }}
           />
-        </Box>
+        </GridItem>
       );
     case "matched":
       return (
-        <Box
+        <GridItem
           display="inline-block"
-          width={8}
-          height={8}
+          width="100%"
+          height="100%"
           textAlign="center"
-          color="gray.300"
+          bg="#f0fff4"
+          padding= "8px"
+          borderRadius = "10px"
         >
           <Content
             style={{
@@ -49,9 +65,10 @@ export function Tile({ content: Content, flip, state }) {
               width: "100%",
               height: "100%",
               verticalAlign: "top",
+              color: "#c6f6d5"
             }}
           />
-        </Box>
+        </GridItem>
       );
     default:
       throw new Error("Invalid state " + state);
